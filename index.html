@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7f8fa">
-  <meta name="description" content="Configurá tu experiencia NFC de Pila UY: elegí qué querés compartir y escribilo en tu tag desde un teléfono compatible.">
-  <title>Configurador NFC · PILA.UY</title>
+  <meta name="description" content="Configurador NFC de Cuadra Studio. Prepará, escribí o limpiá el contenido de tu tag NFC.">
+  <title>Configurador NFC | Cuadra Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -17,9 +17,9 @@
   </style>
 </head>
 <body>
-  <header class="topbar"><div class="brand"><span class="brand-mark">↗</span><span>PILA.UY<small>TECNOLOGÍA SIMPLE</small></span></div><div class="top-note">Configurador de experiencia NFC</div></header>
+  <header class="topbar"><div class="brand"><span class="brand-mark">CS</span><span>CUADRA STUDIO<small>CONFIGURADOR NFC</small></span></div><div class="top-note">Herramienta independiente</div></header>
   <main>
-    <div class="intro"><div><div class="eyebrow">PILA.UY · CONFIGURADOR NFC</div><h1>Configurá tu tag, paso a paso.</h1><p>Elegí qué querés que haga, completá los datos y acercá el tag para programarlo.</p></div></div>
+    <div class="intro"><div><div class="eyebrow">CUADRA STUDIO · HERRAMIENTA NFC</div><h1>Configurador NFC</h1><p>Prepará el contenido de un tag: elegí una acción, completá los datos y escribilo o limpialo.</p></div></div>
     <div class="layout">
       <section class="panel form-panel">
         <div class="wizard-head"><div class="section-head"><span class="num" id="step-number">01</span><div><h2 id="step-title">Elegí qué querés configurar</h2><p id="step-description">Seleccioná una experiencia para tu tag NFC.</p></div></div><div class="wizard-progress"><b id="progress-number">1</b><span id="progress-label">Elegir experiencia</span></div></div>
@@ -38,11 +38,11 @@
       <aside class="hidden" aria-hidden="true"></aside>
     </div>
   </main>
-  <footer class="footer"><span>© PILA.UY</span><span>Conectá tu mundo con un toque.</span></footer>
+  <footer class="footer"><span>Cuadra Studio</span><span>Herramienta para configurar contenido NFC.</span></footer>
   <script>
     const templates={
       whatsapp:{label:'WhatsApp',fields:[['phone','Tu número de WhatsApp','099 123 456','Incluí el código de país: Uruguay es +598.']],build:v=>{let p=v.phone.replace(/\D/g,'');if(p.startsWith('598'))p=p.slice(3);p=p.replace(/^0/,'');if(p.length<8)return null;const msg=v.message.trim();return 'https://wa.me/598'+p+(msg?'?text='+encodeURIComponent(msg):'')}},
-      instagram:{label:'Instagram',fields:[['username','Usuario de Instagram','@pila.uy','Escribí el nombre de usuario, con o sin @.']],build:v=>{const name=v.username.trim().replace(/^@/,'');return /^[a-zA-Z0-9._]{1,30}$/.test(name)?`https://instagram.com/${name}`:null}},
+      instagram:{label:'Instagram',fields:[['username','Usuario de Instagram','@tuusuario','Escribí el nombre de usuario, con o sin @.']],build:v=>{const name=v.username.trim().replace(/^@/,'');return /^[a-zA-Z0-9._]{1,30}$/.test(name)?`https://instagram.com/${name}`:null}},
       web:{label:'Sitio web',fields:[['url','Dirección de tu sitio','https://ejemplo.com','Pegá la dirección completa, incluyendo https://.']],build:v=>{let u=v.url.trim();if(!u)return null;if(!/^https?:\/\//i.test(u))u='https://'+u;try{return new URL(u).href}catch{return null}}},
       contact:{label:'Contacto',fields:[['name','Nombre completo','Nombre y apellido',''],['phone','Teléfono','099 123 456','Incluí el código de país.'],['email','Correo electrónico','hola@ejemplo.com','']],build:v=>{if(!v.name.trim())return null;const esc=s=>s.replace(/\\/g,'\\\\').replace(/;/g,'\\;').replace(/,/g,'\\,').replace(/\n/g,'\\n');return 'BEGIN:VCARD\nVERSION:3.0\nFN:'+esc(v.name.trim())+(v.phone?'\nTEL;TYPE=CELL:'+esc(v.phone.trim()):'')+(v.email?'\nEMAIL:'+esc(v.email.trim()):'')+'\nEND:VCARD'}}
     };
@@ -68,4 +68,3 @@
   </script>
 </body>
 </html>
-
