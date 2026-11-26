@@ -1,0 +1,7 @@
+services:
+  - type: web
+    runtime: static
+    name: nfcpilauy
+    buildCommand: echo "Sitio estático, sin build"
+    staticPublishPath: .
+    autoDeploy: true
